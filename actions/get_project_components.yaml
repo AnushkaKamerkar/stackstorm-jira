@@ -1,0 +1,13 @@
+---
+name: get_project_components
+runner_type: python-script
+description: Retrieveinformation about component Resources present on a project.
+enabled: true
+entry_point: get_project_components.py
+parameters:
+  project_key:
+    type: string
+    description: Project key 
+    required: true
+  
+

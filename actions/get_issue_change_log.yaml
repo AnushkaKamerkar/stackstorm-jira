@@ -1,0 +1,21 @@
+---
+name: get_issue_change_log
+runner_type: python-script
+description: Retrieves information about all changelogs for an issue sorted by date, starting from the oldest.
+enabled: true
+entry_point: get_issue_change_log.py
+parameters:
+  issue_key:
+    type: string
+    description: Issue key 
+    required: true
+  start_at:
+    type: integer
+    description: Offset for pagination
+    required: false
+    default: 0
+  max_results:
+    type: integer
+    description: Maximum number of returned results
+    default: 50
+    required: false

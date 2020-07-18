@@ -1,0 +1,13 @@
+---
+name: get_project_roles
+runner_type: python-script
+description: Retrieve information about role names to resource locations for a project.
+enabled: true
+entry_point: get_project_roles.py
+parameters:
+  project_key:
+    type: string
+    description: Project key 
+    required: true
+  
+
