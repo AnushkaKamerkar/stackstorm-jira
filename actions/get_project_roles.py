@@ -7,12 +7,13 @@ __all__ = [
 
 
 class GetJiraProjectRolesAction(BaseJiraAction):
-    def run(self, project_key):
-        project = self._client.project_roles(project_key)
-	print(project)
-	#return project
-        #result = to_issue_dict(project)
-        #return result
+	def run(self, project_key):
+		project = self._client.project_roles(project_key)
+		print(project)
+		print("#############")
+		#return project
+		#result = to_issue_dict(project)
+		#return result
 
 
 
