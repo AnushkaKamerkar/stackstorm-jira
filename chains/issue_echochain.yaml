@@ -4,7 +4,7 @@
             name: "c1"
             ref: "jira.get_issue"
             parameters:
-                ticket_id: "CS-5"
+                issue_key: "CS-5"
             on-success: "c2"
             on-failure: "c4"
         -

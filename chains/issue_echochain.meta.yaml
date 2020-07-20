@@ -29,7 +29,6 @@ parameters:
     description: True to include custom fields.
     required: true
     default: false
-	
 
   skip_notify:
     default:
@@ -39,4 +38,5 @@ notify:
     message: "\"@channel: Action succeeded.\""
     routes:
       - "slack"
+
 
