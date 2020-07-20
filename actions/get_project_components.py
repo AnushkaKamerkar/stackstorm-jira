@@ -9,8 +9,8 @@ __all__ = [
 class GetJiraProjectComponentsAction(BaseJiraAction):
 	def run(self, project_key):
 		project = self._client.project_components(project_key)
-		print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2")
 		print(project)
+		print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2")
 		return project
 		#result = to_issue_dict(project)
 		#return result
