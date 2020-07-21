@@ -5,28 +5,8 @@ description: Get a list of user Resources that match the specified search string
 enabled: true
 entry_point: get_users.py
 parameters:
-  user:
+  user_id:
     type: string
-    description: a string to match usernames, name or email against
+    description: a string to match user's account id
     required: true
-  start_at:
-    type: integer
-    description: Offset for pagination
-    required: false
-    default: 0
-  max_results:
-    type: integer
-    description: Maximum number of returned results
-    default: 50
-    required: false
-  include_active:
-    type: boolean
-    description: True to include active users.
-    required: true
-    default: true
-  include_inactive:
-    type: boolean
-    description: True to include inactive users.
-    required: true
-    default: false
-  
+

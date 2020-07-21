@@ -1,0 +1,32 @@
+---
+    chain:
+        -
+            name: "c1"
+            ref: "jira.get_issue_comments"
+            parameters:
+                issue_key: "CS-5"
+            on-success: "c2"
+            on-failure: "c4"
+        -
+            name: "c2"
+            ref: "sql.insert_bulk"
+            parameters:
+                data: "{{c1.result}}"
+                table: "comments"
+                connection: postgresql
+         
+            on-success: "c3"
+            on-failure: "c4"
+        -
+            name: "c3"
+            ref: "core.local"
+            parameters:
+                cmd: "echo c3"
+            on-failure: "c4"
+        -
+            name: "c4"
+            ref: "core.local"
+            parameters:
+                cmd: "echo fail c4"
+    default: "c1"
+

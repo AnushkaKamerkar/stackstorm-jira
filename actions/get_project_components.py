@@ -1,5 +1,5 @@
 from lib.base import BaseJiraAction
-#from lib.formatters import to_issue_dict
+from lib.formatters import to_project_dict
 
 __all__ = [
     'GetJiraProjectComponentsAction'
@@ -8,9 +8,11 @@ __all__ = [
 
 class GetJiraProjectComponentsAction(BaseJiraAction):
 	def run(self, project_key):
-		project = self._client.project_components(project_key)
-		print(project)
-		print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2")
-		return project
-		#result = to_issue_dict(project)
-		#return result
+		projects = self._client.project_components(project_key)
+		print(projects)
+		results = []
+		for project_key in projects:
+				results.append(to_project_dict(project_key=project_key))				
+		return results
+
+

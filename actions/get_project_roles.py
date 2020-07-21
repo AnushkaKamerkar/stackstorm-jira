@@ -1,5 +1,6 @@
 from lib.base import BaseJiraAction
-#from lib.formatters import to_issue_dict
+#from lib.formatters import to_project_dict
+
 
 __all__ = [
     'GetJiraProjectRolesAction'
@@ -8,13 +9,14 @@ __all__ = [
 
 class GetJiraProjectRolesAction(BaseJiraAction):
 	def run(self, project_key):
-		project = self._client.project_roles(project_key)
-		print(project)
-		print("#############")
-		#return project
-		#result = to_issue_dict(project)
-		#return result
+		results=[]
+		projects = self._client.project_roles(project_key)
 
+		for role, info in projects.items():
+    			results.append(info)
+		return results
+
+		
 
 
 

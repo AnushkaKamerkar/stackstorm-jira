@@ -1,6 +1,7 @@
 __all__ = [
     'to_issue_dict',
-    'to_comment_dict'
+    'to_comment_dict',
+    'to_project_dict'
 ]
 
 
@@ -89,3 +90,14 @@ def to_attachment_dict(attachment):
         'content': attachment.content,
     }
     return result
+
+def to_project_dict(project_key):
+    """
+    :rtype: ``dict``
+    """
+    result = {
+        'name': project_key.name
+    }
+    return result
+
+

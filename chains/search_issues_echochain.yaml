@@ -2,9 +2,9 @@
     chain:
         -
             name: "c1"
-            ref: "jira.get_issue"
+            ref: "jira.search_issues"
             parameters:
-                issue_key: "CS-5"
+                query: "project = CS"
             on-success: "c2"
             on-failure: "c4"
         -

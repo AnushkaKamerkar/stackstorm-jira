@@ -1,0 +1,27 @@
+# Action definition metadata
+name: "issue_comment_echochain"
+description: "Actionchain for storing jira issue comments to db"
+
+# `runner_type` has value `action-chain` to identify that action is an ActionChain.
+runner_type: "action-chain"
+
+# `entry_point` path to the ActionChain definition file, relative to the pack's action directory.
+entry_point: "issue_comment_echochain.yaml"
+
+enabled: true
+parameters:
+  issue_key:
+    type: string
+    description: Issue key
+    required: true
+
+  skip_notify:
+    default:
+      - c2
+notify:
+  on-complete:
+    message: "\"@channel: Action succeeded.\""
+    routes:
+      - "slack"
+
+
