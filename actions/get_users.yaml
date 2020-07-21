@@ -5,7 +5,7 @@ description: Get a list of user Resources that match the specified search string
 enabled: true
 entry_point: get_users.py
 parameters:
-  user_id:
+  accountId:
     type: string
     description: a string to match user's account id
     required: true

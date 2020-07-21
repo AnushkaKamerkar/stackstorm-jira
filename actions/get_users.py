@@ -8,8 +8,8 @@ __all__ = [
 
 
 class GetJiraUsersAction(BaseJiraAction):
-	def run(self, user_id):
-		users = self._client.user(user_id)
+	def run(self, accountId):
+		users = self._client.user(accountId)
 		print(users)	
 
 		return users
