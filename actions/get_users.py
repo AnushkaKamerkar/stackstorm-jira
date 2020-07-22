@@ -1,15 +1,14 @@
- 
 from lib.base import BaseJiraAction
-#from lib.formatters import to_issue_dict
 
 __all__ = [
-    'GetJiraUsersAction'
+    'GetJiraUserAction'
 ]
 
 
-class GetJiraUsersAction(BaseJiraAction):
-	def run(self, accountId):
-		users = self._client.user(accountId)
-		print(users)	
+class GetJiraUserAction(BaseJiraAction):
+	def run(self, group):
+		group = self._client.group_members("jira-users")
+		for users in group:
+		    print users
 
-		return users
+		return group
