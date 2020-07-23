@@ -1,0 +1,12 @@
+---
+name: get_change_log
+runner_type: python-script
+description: Get a list of issue change logsthat match the specified search string.
+enabled: true
+entry_point: get_change_log.py
+parameters:
+  issue_key:
+    type: string
+    description: a string to match user's issue id
+    required: true
+
