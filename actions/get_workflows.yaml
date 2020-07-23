@@ -3,7 +3,7 @@ name: get_workflows
 runner_type: python-script
 description: Get a list of user Resources that match the specified search string.
 enabled: true
-entry_point: get_users.py
+entry_point: get_workflows.py
 parameters:
 
 
