@@ -1,4 +1,7 @@
 from jira import JIRA
+from requests.auth import HTTPBasicAuth
+import requests
+import json
 
 #  from st2common.runners.base_action import Action
 __all__ = [
@@ -37,9 +40,9 @@ class BaseJiraAction(Action):
             client = JIRA(options=options, oauth=oauth_creds)
 
         elif auth_method == 'basic':
-            basic_creds = (config['username'], config['password'])
-            client = JIRA(options=options, basic_auth=basic_creds,
-                          validate=config.get('validate', False))
+            email = config['email']		
+	    token = config['api_token']
+            client = HTTPBasicAuth(email, token)
 
         else:
             msg = ('You must set auth_method to either "oauth"',
@@ -47,6 +50,15 @@ class BaseJiraAction(Action):
             raise Exception(msg)
 
         return client
+
+    def get_users(self,accountId):
+	url = "https://thrivecs.atlassian.net/rest/api/3/user/bulk"
+	#auth = HTTPBasicAuth("anushka@coditation.com", "rBC647X9WzvSUY3JZV15152F")
+	headers = {"Accept": "application/json"}
+	query = {'accountId': '5b4f0eb54351c62c0572b071'}
+	response = requests.request("GET",url,headers=headers,params=query,auth=client)
+	#print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
+	return response
 
     def _get_file_content(self, file_path):
         with open(file_path, 'r') as fp:
