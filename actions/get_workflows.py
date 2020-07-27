@@ -16,6 +16,15 @@ class GetJiraWorkflowAction(Action):
 		auth = HTTPBasicAuth(email, token)
 		headers = {"Accept": "application/json"}
 		response = requests.request("GET",url,headers=headers,auth=auth)
-		result = (response.json())		
-		return result["values"]
+		result = response.json()
+
+		result1=[]
+		result2 = {}
+		for item in result["values"]:
+			result2["name"] = item.get("id").get("name")
+			result2["description"] = item.get("description")
+			result1.append(result2.copy())
+
+		return result1
+
 

@@ -1,13 +1,21 @@
 from st2common.runners.base_action import Action
 from requests.auth import HTTPBasicAuth
 import requests
-from flatten_dict import flatten
+import json
+
 
 __all__ = [
     'GetJiraUserAction'
 ]
 
 class GetJiraUserAction(Action):
+	def flatten_dict(dd, separator ='_', prefix =''): 
+	    return { prefix + separator + k if prefix else k : v 
+		     for kk, vv in dd.items() 
+		     for k, v in flatten_dict(vv, separator, kk).items() 
+		     } if isinstance(dd, dict) else { prefix : dd } 
+
+
 	def run(self, accountId):
 		email=self.config['email']
 		token = self.config['api_token']
@@ -18,8 +26,15 @@ class GetJiraUserAction(Action):
 		headers = {"Accept": "application/json"}
 		query = {'accountId': accountId}
 		response = requests.request("GET",url,headers=headers,params=query,auth=auth)
-		result = flatten(response.json())
-		print(type(result))
-		return result
+		
+		result = response.json()
+		result1=result["values"]
+		for i in result1:
+			res_dct = dict(i)
+			
+
+		return res_dct
+
+
 
 		

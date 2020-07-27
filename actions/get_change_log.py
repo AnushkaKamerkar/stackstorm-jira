@@ -15,9 +15,9 @@ class GetJiraUserAction(Action):
 		url = base_url + "/rest/api/3/issue/" + issue_key + "/changelog"
 		auth = HTTPBasicAuth(email, token)
 		headers = {"Accept": "application/json"}
-		query = {'accountId': accountId}
-		response = requests.request("GET",url,headers=headers,params=query,auth=auth)
-		result = (response.json())		
+		response = requests.request("GET",url,headers=headers,auth=auth)
+		result = (response.json())
+		
 		return result["values"]
 
 
